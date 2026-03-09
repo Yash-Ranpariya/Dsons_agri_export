@@ -1,0 +1,41 @@
+<svg width="600" height="120" viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ed8936" />
+      <stop offset="50%" stop-color="#faf089" />
+      <stop offset="100%" stop-color="#fefcbf" />
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2d3748" />
+      <stop offset="100%" stop-color="#1a202c" />
+    </linearGradient>
+    <pattern id="img1" patternUnits="userSpaceOnUse" width="100" height="100">
+      <image href="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&amp;w=200&amp;auto=format&amp;fit=crop" x="0" y="0" width="100" height="100" />
+    </pattern>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&amp;display=swap');
+      
+      .title { font-family: 'Playfair Display', serif; font-weight: 800; font-size: 40px; fill: #1a202c; }
+      .title-accent { fill: #ed8936; }
+      .emp-r { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 48px; fill: url(#grad1); }
+      .subtitle { font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 11px; fill: #718096; letter-spacing: 0.25em; text-transform: uppercase; }
+    </style>
+  </defs>
+
+  <g transform="translate(10, 20)">
+    <!-- Circle emblem background -->
+    <circle cx="40" cy="40" r="40" fill="url(#bgGrad)" stroke="#e2e8f0" stroke-width="3" />
+    
+    <!-- Image overlay pattern with opacity -->
+    <circle cx="40" cy="40" r="40" fill="url(#img1)" opacity="0.4" style="mix-blend-mode: luminosity" />
+    <!-- Gradient overlay -->
+    <circle cx="40" cy="40" r="40" fill="url(#grad1)" opacity="0.3" style="mix-blend-mode: multiply" />
+
+    <!-- Letter R -->
+    <text x="40" y="58" text-anchor="middle" class="emp-r">R</text>
+
+    <!-- Text -->
+    <text x="100" y="48" class="title">Ranpariya's <tspan class="title-accent">Sons</tspan></text>
+    <text x="103" y="70" class="subtitle">Global Spice Exporter</text>
+  </g>
+</svg>

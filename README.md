@@ -1,7 +1,7 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Yash-Ranpariya/Dsons_agri_export/main/public/logo.png" alt="Dsons Agri Export Logo" width="200" style="border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px;" />
+  <img src="https://raw.githubusercontent.com/Yash-Ranpariya/Dsons_agri_export/main/public/website-logo.svg" alt="Ranpariya's Sons Logo" width="400" style="margin-bottom: 20px;" />
   
-  <h1 align="center">🌾 Dsons Agri Export</h1>
+  <h1 align="center">🌾 Ranpariya's Sons</h1>
   
   <p align="center">
     <strong>Premium Agricultural Products Exporting to the World</strong>
