@@ -31,18 +31,21 @@ const blogPosts = [
 
 const Blog = () => {
     return (
-        <div className="py-24 bg-white min-h-screen">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="py-32 bg-beige dark:bg-dark-bg min-h-screen relative overflow-hidden transition-colors duration-500">
+            {/* Background glowing orbs */}
+            <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-primary/5 dark:bg-primary/10 rounded-full blur-[150px] -z-10 pointer-events-none"></div>
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-center mb-20"
+                    className="text-center mb-20 relative"
                 >
-                    <span className="text-secondary font-bold uppercase tracking-widest text-sm mb-4 block">Knowledge Hub</span>
-                    <h1 className="text-5xl font-extrabold text-gray-900 font-serif mb-6">Our Blog</h1>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">Insights, industry news, and everything you need to know about the world of premium spices.</p>
-                    <div className="w-24 h-1 bg-accent mx-auto mt-8"></div>
+                    <span className="text-secondary font-bold uppercase tracking-[0.2em] text-sm mb-4 block animate-pulse">Knowledge Hub</span>
+                    <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white font-serif mb-6 drop-shadow-lg">Our Blog</h1>
+                    <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">Insights, industry news, and everything you need to know about the world of premium spices.</p>
+                    <div className="w-24 h-1 bg-gradient-to-r from-transparent via-accent to-transparent mx-auto mt-8"></div>
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -52,38 +55,42 @@ const Blog = () => {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: i * 0.1 }}
-                            className="bg-beige rounded-2xl overflow-hidden shadow-lg border border-gray-100 group flex flex-col h-full cursor-pointer hover:shadow-2xl transition-all"
+                            transition={{ delay: i * 0.1, type: "spring", stiffness: 100 }}
+                            whileHover={{ y: -10 }}
+                            className="glass-premium rounded-3xl overflow-hidden shadow-xl group flex flex-col h-full cursor-pointer transition-all"
                         >
-                            <div className="h-64 overflow-hidden relative">
+                            <div className="h-64 overflow-hidden relative m-3 rounded-2xl">
                                 <img
                                     src={post.img}
                                     alt={post.title}
-                                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                                    className="w-full h-full object-cover transform group-hover:scale-110 group-hover:rotate-1 transition-all duration-700 ease-out"
                                 />
-                                <div className="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+                                <div className="absolute top-4 left-4 bg-primary/90 backdrop-blur-md text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md">
                                     {post.category}
                                 </div>
                             </div>
-                            <div className="p-8 flex-1 flex flex-col">
-                                <div className="flex items-center text-gray-400 text-sm mb-4 space-x-4">
+                            <div className="p-8 flex-1 flex flex-col relative z-10">
+                                <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm mb-4 space-x-4 font-medium">
                                     <div className="flex items-center">
-                                        <Clock size={16} className="mr-1" />
+                                        <Clock size={16} className="mr-1.5 text-primary dark:text-accent" />
                                         {post.date}
                                     </div>
                                     <div className="flex items-center">
-                                        <User size={16} className="mr-1" />
+                                        <User size={16} className="mr-1.5 text-primary dark:text-accent" />
                                         {post.author}
                                     </div>
                                 </div>
-                                <h3 className="text-2xl font-bold font-serif text-gray-900 mb-4 group-hover:text-primary transition-colors">
+                                <h3 className="text-2xl font-bold font-serif text-gray-900 dark:text-white mb-4 group-hover:text-primary dark:group-hover:text-accent transition-colors">
                                     {post.title}
                                 </h3>
-                                <p className="text-gray-600 mb-6 flex-1 leading-relaxed">
+                                <p className="text-gray-600 dark:text-gray-300 mb-6 flex-1 leading-relaxed font-light">
                                     {post.excerpt}
                                 </p>
-                                <Link to="#" className="text-secondary font-bold hover:text-primary transition-colors flex items-center md:mt-auto">
-                                    Read Article &rarr;
+                                <Link to="#" className="text-primary dark:text-accent font-bold group-hover:text-secondary transition-colors flex items-center md:mt-auto">
+                                    <span className="relative flex items-center transition-transform group-hover:translate-x-2">
+                                        Read Article &rarr;
+                                    </span>
                                 </Link>
                             </div>
                         </motion.div>

@@ -42,19 +42,22 @@ const Home = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1, ease: "easeOut" }}
                     >
-                        <span className="block text-accent font-semibold tracking-widest uppercase mb-4 text-sm md:text-base">Welcome to Ranpariya's Sons</span>
-                        <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight drop-shadow-xl font-serif">
+                        <span className="block text-accent font-semibold tracking-widest uppercase mb-4 text-sm md:text-base tracking-[0.2em] animate-pulse">Welcome to Ranpariya's Sons</span>
+                        <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight font-serif drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)]">
                             Premium Quality <br />
-                            <span className="text-secondary bg-clip-text text-transparent bg-gradient-to-r from-secondary to-accent">Indian Spices</span> Exporter
+                            <span className="text-gradient drop-shadow-[0_2px_5px_rgba(230,170,50,0.3)]">Indian Spices</span> Exporter
                         </h1>
-                        <p className="text-lg md:text-2xl text-gray-200 mb-10 max-w-3xl mx-auto font-light drop-shadow-md">
+                        <p className="text-lg md:text-2xl text-gray-200 mb-10 max-w-3xl mx-auto font-light drop-shadow-lg tracking-wide">
                             Delivering authentic, ethically-sourced Indian spices worldwide.
                         </p>
-                        <div className="flex justify-center gap-4 flex-wrap">
-                            <Link to="/products" className="bg-primary hover:bg-spiceloc text-white px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:-translate-y-1 shadow-[0_10px_20px_rgba(185,28,28,0.3)] flex items-center">
-                                Explore Products <ArrowRight className="ml-2" size={20} />
+                        <div className="flex justify-center gap-6 flex-wrap mt-8">
+                            <Link to="/products" className="relative overflow-hidden group bg-primary/90 backdrop-blur-sm text-white px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:-translate-y-1 shadow-[0_0_20px_rgba(185,28,28,0.4)] hover:shadow-[0_0_30px_rgba(185,28,28,0.7)] hover:bg-primary flex items-center border border-white/20">
+                                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></span>
+                                <span className="relative flex items-center">
+                                    Explore Products <ArrowRight className="ml-2" size={20} />
+                                </span>
                             </Link>
-                            <Link to="/contact" className="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white px-8 py-4 rounded-full text-lg font-bold transition-all duration-300">
+                            <Link to="/contact" className="glass hover:bg-white hover:text-black text-white px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:-translate-y-1 shadow-lg">
                                 Contact Us
                             </Link>
                         </div>
@@ -207,16 +210,18 @@ const Home = () => {
                             initial={{ opacity: 0, x: 50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="md:w-5/12"
+                            className="md:w-5/12 relative"
                         >
-                            <div className="bg-white/5 backdrop-blur-lg p-8 rounded-2xl border border-white/10 shadow-2xl">
-                                <h3 className="text-2xl font-bold mb-6">Ready to export?</h3>
-                                <form className="space-y-4">
-                                    <input type="text" placeholder="Your Name" className="w-full bg-black/50 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-white" />
-                                    <input type="email" placeholder="Email Address" className="w-full bg-black/50 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-white" />
-                                    <textarea placeholder="Tell us about your requirement" rows="4" className="w-full bg-black/50 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-white resize-none"></textarea>
-                                    <button className="w-full bg-primary hover:bg-secondary text-white font-bold py-4 rounded-lg transition-colors duration-300">
-                                        Send Inquiry
+                            <div className="absolute inset-0 bg-primary/20 blur-3xl -z-10 rounded-full"></div>
+                            <div className="glass-premium p-10 rounded-3xl relative z-10 text-gray-900 dark:text-white">
+                                <h3 className="text-3xl font-bold mb-8 font-serif">Ready to export?</h3>
+                                <form className="space-y-5">
+                                    <input type="text" placeholder="Your Name" className="w-full bg-white/50 dark:bg-black/40 border border-gray-300 dark:border-gray-700/50 rounded-xl px-5 py-4 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 backdrop-blur-sm transition-all shadow-inner" />
+                                    <input type="email" placeholder="Email Address" className="w-full bg-white/50 dark:bg-black/40 border border-gray-300 dark:border-gray-700/50 rounded-xl px-5 py-4 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 backdrop-blur-sm transition-all shadow-inner" />
+                                    <textarea placeholder="Tell us about your requirement" rows="4" className="w-full bg-white/50 dark:bg-black/40 border border-gray-300 dark:border-gray-700/50 rounded-xl px-5 py-4 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 backdrop-blur-sm transition-all resize-none shadow-inner"></textarea>
+                                    <button className="w-full relative overflow-hidden group bg-primary text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(139,26,32,0.4)] hover:shadow-[0_0_30px_rgba(139,26,32,0.6)] hover:-translate-y-1">
+                                        <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></span>
+                                        <span className="relative">Send Inquiry</span>
                                     </button>
                                 </form>
                             </div>

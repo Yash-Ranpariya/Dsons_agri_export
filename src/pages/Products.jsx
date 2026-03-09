@@ -83,47 +83,61 @@ const Products = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
 
     return (
-        <div className="py-24 bg-white min-h-screen relative">
+        <div className="py-32 bg-beige dark:bg-dark-bg transition-colors duration-500 min-h-screen relative z-0">
+            {/* Background glowing orbs */}
+            <div className="fixed top-20 left-10 w-96 h-96 bg-primary/5 dark:bg-primary/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+            <div className="fixed bottom-10 right-10 w-[500px] h-[500px] bg-accent/5 dark:bg-accent/10 rounded-full blur-[150px] -z-10 pointer-events-none"></div>
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-center mb-20"
+                    className="text-center mb-20 relative"
                 >
-                    <span className="text-secondary font-bold uppercase tracking-widest text-sm mb-4 block">Export Quality</span>
-                    <h1 className="text-5xl font-extrabold text-gray-900 font-serif mb-6">Our Premium Spices</h1>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">Browse our exquisite selection of 100% natural, lab-tested spices ready for global dispatch in bulk quantities.</p>
-                    <div className="w-24 h-1 bg-accent mx-auto mt-8"></div>
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-primary/10 blur-[100px] -z-10 rounded-full"></div>
+                    <span className="text-secondary font-bold uppercase tracking-[0.2em] text-sm mb-4 block animate-pulse">Export Quality</span>
+                    <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white font-serif mb-6 drop-shadow-lg">Our Premium Spices</h1>
+                    <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">Browse our exquisite selection of 100% natural, lab-tested spices ready for global dispatch in bulk quantities.</p>
+                    <div className="w-24 h-1 bg-gradient-to-r from-transparent via-accent to-transparent mx-auto mt-8"></div>
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     {products.map((prod, idx) => (
                         <motion.div
                             key={idx}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
+                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1, duration: 0.5 }}
-                            className="group bg-beige rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 flex flex-col h-full"
+                            transition={{ delay: idx * 0.1, duration: 0.6, type: "spring", stiffness: 100 }}
+                            whileHover={{ y: -10 }}
+                            className="group relative rounded-3xl overflow-hidden glass-premium flex flex-col h-full cursor-pointer"
+                            onClick={() => setSelectedProduct(prod)}
                         >
-                            <div className="h-64 overflow-hidden relative">
+                            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
+
+                            <div className="h-72 overflow-hidden relative z-10 m-3 rounded-2xl">
                                 <img
                                     src={prod.image}
                                     alt={prod.name}
-                                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                                    className="w-full h-full object-cover transform group-hover:scale-110 group-hover:rotate-2 transition-all duration-700 ease-out"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+                                <div className="absolute bottom-4 left-4 right-4 text-white">
+                                    <span className="bg-primary/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase">{prod.category}</span>
+                                </div>
                             </div>
 
-                            <div className="p-8 flex-1 flex flex-col cursor-pointer" onClick={() => setSelectedProduct(prod)}>
-                                <h3 className="text-2xl font-bold font-serif text-gray-900 mb-3">{prod.name}</h3>
-                                <p className="text-gray-600 mb-6 flex-1 leading-relaxed">
+                            <div className="p-8 flex-1 flex flex-col z-10 relative">
+                                <h3 className="text-2xl font-bold font-serif text-gray-900 dark:text-white mb-3 group-hover:text-primary dark:group-hover:text-accent transition-colors">{prod.name}</h3>
+                                <p className="text-gray-600 dark:text-gray-400 mb-6 flex-1 leading-relaxed">
                                     {prod.desc}
                                 </p>
-                                <button className="text-primary font-bold flex items-center group/btn mt-auto">
-                                    View Full Details
-                                    <Info className="ml-2 transform group-hover/btn:scale-110 transition-transform" size={20} />
+                                <button className="text-primary dark:text-accent font-bold flex items-center group/btn mt-auto relative">
+                                    <span className="relative z-10 flex items-center transition-transform group-hover/btn:translate-x-2">
+                                        View Full Details
+                                        <Info className="ml-2" size={20} />
+                                    </span>
                                 </button>
                             </div>
                         </motion.div>

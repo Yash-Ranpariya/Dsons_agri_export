@@ -3,11 +3,19 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-primary: #b91c1c;
-  --color-secondary: #92400e;
-  --color-accent: #f59e0b;
-  --color-spiceloc: #dc2626;
-  --color-beige: #fdf8f5;
+  --color-primary: #8C1A20;
+  /* Deep Burgundy Red */
+  --color-secondary: #C07936;
+  /* Rich Spice Gold/Bronze */
+  --color-accent: #E5A93C;
+  /* Saffron Gold */
+  --color-spiceloc: #E24838;
+  /* Vibrant Spice Red */
+  --color-beige: #FAF6F0;
+  /* Soft Warm Beige */
+  --color-dark-bg: #09090B;
+  /* OLED Black */
+  --color-dark-surface: #18181A;
   --font-sans: 'Outfit', system-ui, sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
 }
@@ -15,12 +23,47 @@
 @layer base {
   body {
     font-family: var(--font-sans);
-    @apply bg-beige dark:bg-black text-gray-900 dark:text-gray-100;
+    @apply bg-beige text-gray-900 transition-colors duration-500 selection:bg-accent/30 selection:text-primary;
+  }
+
+  .dark body {
+    @apply bg-dark-bg text-gray-100 selection:bg-accent/30 selection:text-accent;
   }
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-beige dark:bg-dark-bg;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/70 hover:bg-primary rounded-full transition-colors;
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/60 dark:bg-dark-surface/60 backdrop-blur-xl border border-white/30 dark:border-white/10;
+  }
+
+  .glass-premium {
+    @apply bg-gradient-to-br from-white/80 to-white/40 dark:from-dark-surface/80 dark:to-dark-surface/40 backdrop-blur-2xl border border-white/50 dark:border-white/10 shadow-[0_8px_32px_0_#0000001a] dark:shadow-[0_8px_32px_0_#00000080];
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-spiceloc to-accent dark:from-accent dark:via-secondary dark:to-white;
+  }
+
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent via-yellow-200 to-secondary;
+  }
 }
 
 @keyframes spiceFall {
