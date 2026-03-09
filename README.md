@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Yash-Ranpariya/Dsons_agri_export/main/public/vite.svg" alt="Dsons Agri Export Logo" width="120" style="border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px;" />
+  <img src="https://raw.githubusercontent.com/Yash-Ranpariya/Dsons_agri_export/main/public/logo.png" alt="Dsons Agri Export Logo" width="200" style="border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px;" />
   
   <h1 align="center">🌾 Dsons Agri Export</h1>
   
