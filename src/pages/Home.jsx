@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle, Globe } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import RecipeVideos from '../components/RecipeVideos';
 
 const fadeIn = {
@@ -17,23 +18,56 @@ const staggerContainer = {
 };
 
 const Home = () => {
+    const [activeVideo, setActiveVideo] = useState(0);
+
+    useEffect(() => {
+        // Switch between the two videos every 50 seconds for a seamless crossfade loop
+        const interval = setInterval(() => {
+            setActiveVideo((prev) => (prev === 0 ? 1 : 0));
+        }, 50000); 
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <div className="overflow-hidden">
-            {/* Hero Section */}
-            <section className="relative h-screen flex items-center justify-center overflow-hidden">
+            {/* Cinematic Hero Section */}
+            <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
                 <div className="absolute inset-0 z-0">
-                    <video
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
-                    >
-                        <source src="/videos/hero-spice.mp4" type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
+                    <div className="relative w-full h-full pointer-events-none overflow-hidden">
+                        {/* Video 1 (First 50s) */}
+                        <motion.div
+                            initial={{ opacity: 1 }}
+                            animate={{ opacity: activeVideo === 0 ? 1 : 0 }}
+                            transition={{ duration: 2, ease: "easeInOut" }}
+                            className="absolute inset-0 z-10"
+                        >
+                            <iframe
+                                className="absolute top-1/2 left-1/2 w-[300vw] h-[300vh] min-w-[150vw] min-h-[150vh] md:w-[150vw] md:h-[150vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                                src="https://www.youtube.com/embed/lJUA4ODL3WQ?autoplay=1&mute=1&loop=1&playlist=lJUA4ODL3WQ&controls=0&showinfo=0&rel=0&start=0&end=50&disablekb=1&playsinline=1"
+                                title="Hero Video 1"
+                                allow="autoplay; encrypted-media; picture-in-picture"
+                                frameBorder="0"
+                            ></iframe>
+                        </motion.div>
+                        
+                        {/* Video 2 (Slow Mo Spices test) */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: activeVideo === 1 ? 1 : 0 }}
+                            transition={{ duration: 2, ease: "easeInOut" }}
+                            className="absolute inset-0 z-0 bg-black"
+                        >
+                            <iframe
+                                className="absolute top-1/2 left-1/2 w-[300vw] h-[300vh] min-w-[150vw] min-h-[150vh] md:w-[150vw] md:h-[150vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                                src="https://www.youtube.com/embed/7o2LxVSO0rc?autoplay=1&mute=1&loop=1&playlist=7o2LxVSO0rc&controls=0&showinfo=0&rel=0&disablekb=1&playsinline=1"
+                                title="Hero Video 2"
+                                allow="autoplay; encrypted-media; picture-in-picture"
+                                frameBorder="0"
+                            ></iframe>
+                        </motion.div>
+                    </div>
                     {/* Dark gradient overlay to ensure text readability */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-900/60 to-gray-900/40"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-900/60 to-gray-900/40 z-20 transition-colors duration-1000"></div>
                 </div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white w-full">

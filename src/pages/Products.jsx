@@ -76,6 +76,24 @@ const products = [
         origin: 'Kanyakumari, Tamil Nadu, India',
         harvestSeason: 'December to April',
         shelfLife: '24-36 Months in cool, dark place'
+    },
+    {
+        name: 'Garlic Powder',
+        category: 'Dehydrated Spice',
+        desc: 'Premium quality dehydrated garlic powder with an intense flavor and aroma, perfect for culinary use and mass manufacturing.',
+        image: '/images/garlic_powder.png',
+        origin: 'Gujarat & Madhya Pradesh, India',
+        harvestSeason: 'March to May',
+        shelfLife: '12-18 Months in airtight packaging'
+    },
+    {
+        name: 'Onion Powder',
+        category: 'Dehydrated Spice',
+        desc: 'Aromatic and fine onion powder, made from farm-fresh dehydrated onions, delivering sweet and sharp savory flavor.',
+        image: '/images/onion_powder.png',
+        origin: 'Maharashtra & Gujarat, India',
+        harvestSeason: 'January to May',
+        shelfLife: '12-18 Months in airtight packaging'
     }
 ];
 
